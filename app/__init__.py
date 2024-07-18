@@ -1,8 +1,10 @@
+import os
 import logging
-from logging.handlers import RotatingFileHandler
 from flask import Flask
 from flask_cors import CORS
-import os
+from .routes.media_routes import media_routes
+from .routes.main import main as main_blueprint
+from logging.handlers import RotatingFileHandler
 
 def create_app():
   app = Flask(__name__)
@@ -21,8 +23,7 @@ def create_app():
     app.logger.setLevel(logging.INFO)
     app.logger.info('Application startup')
   
-
-  from .routes import main as main_blueprint
+  app.register_blueprint(media_routes)
   app.register_blueprint(main_blueprint)
 
   return app

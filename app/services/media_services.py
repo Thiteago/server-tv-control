@@ -1,8 +1,8 @@
-import os
+
 import requests
 import time
-from .keyboard_events import PressKey, ReleaseKey
 from comtypes import CLSCTX_ALL
+from ..helpers.keyboard_events import PressKey, ReleaseKey
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 class MediaController:
@@ -82,8 +82,3 @@ class MediaController:
     else:
       self.press_key(self.VK_MEDIA_PREV_TRACK)
       return True
-
-class SystemController:
-  @staticmethod
-  def shutdown():
-    os.system('shutdown /s /t 1')
