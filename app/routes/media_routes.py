@@ -67,3 +67,8 @@ def schedule_shutdown():
   minutes = data.get('minutes', 1)
   system_controller.schedule_shutdown(minutes)
   return jsonify({'message': f'Shutdown scheduled in {minutes} minutes', 'success': True})
+
+@media_routes.route('/cancel_shutdown', methods=['POST'])
+def cancel_shutdown():
+  system_controller.cancel_shutdown()
+  return jsonify({'message': 'Shutdown cancelled', 'success': True})
