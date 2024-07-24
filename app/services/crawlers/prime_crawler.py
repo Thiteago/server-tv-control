@@ -42,7 +42,7 @@ class PrimeCrawler:
     self.driver.switch_to.window(self.driver.window_handles[1])
     self.driver.get('https://www.primevideo.com')
     try:
-      self.driver.find_element(By.CSS_SELECTOR, '[data-automation-id="nav-non-active-profile"]')
+      self.driver.find_element(By.CSS_SELECTOR, '[data-automation-id="nav-active-profile-name"]')
       return True
     except NoSuchElementException:
       self.login()
